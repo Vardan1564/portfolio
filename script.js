@@ -4,6 +4,7 @@ const navLinks = document.querySelectorAll(".nav a");
 const revealItems = document.querySelectorAll(".reveal");
 const contactForm = document.getElementById("contact-form");
 const formStatus = document.getElementById("form-status");
+const contactSubmit = document.getElementById("contact-submit");
 const yearEl = document.getElementById("year");
 const avatarImage = document.getElementById("avatar-image");
 const avatarFallback = document.getElementById("avatar-fallback");
@@ -35,11 +36,38 @@ const observer = new IntersectionObserver(
 revealItems.forEach((item) => observer.observe(item));
 
 if (contactForm) {
-  contactForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    formStatus.textContent =
-      "Thanks for reaching out. I will get back to you soon.";
-    contactForm.reset();
+  contactForm.addEventListener("submit", () => {
+    const nameField = contactForm.querySelector('input[name="name"]');
+    const visibleSubjectField = contactForm.querySelector('input[name="subject"]');
+    const emailSubjectField = contactForm.querySelector('input[name="_subject"]');
+    const originalButtonText = contactSubmit ? contactSubmit.textContent : "";
+    const senderName = nameField ? nameField.value.trim() : "";
+    const enteredSubject = visibleSubjectField ? visibleSubjectField.value.trim() : "";
+
+    if (emailSubjectField) {
+      emailSubjectField.value =
+        senderName && enteredSubject
+          ? `${senderName} - ${enteredSubject}`
+          : senderName || enteredSubject || "New portfolio contact request";
+    }
+
+    if (contactSubmit) {
+      contactSubmit.disabled = true;
+      contactSubmit.textContent = "Sending...";
+    }
+
+    if (formStatus) {
+      formStatus.textContent = "Sending your message...";
+      formStatus.dataset.state = "sending";
+    }
+
+    // Restore the button if browser blocks or cancels the submission.
+    window.setTimeout(() => {
+      if (contactSubmit) {
+        contactSubmit.disabled = false;
+        contactSubmit.textContent = originalButtonText || "Send Message";
+      }
+    }, 7000);
   });
 }
 

@@ -204,23 +204,36 @@
         </div>
         <div class="contact-grid">
           <div class="contact-info">
-            <p><i class="fa-solid fa-envelope"></i> your.email@example.com</p>
-            <p><i class="fa-solid fa-phone"></i> +91 00000 00000</p>
+            <p><i class="fa-solid fa-envelope"></i> patadiyavardan@gmail.com</p>
+            <p><i class="fa-solid fa-phone"></i> +91 90164 10956</p>
             <p>
               <i class="fa-brands fa-linkedin"></i>
-              <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer"
-                >linkedin.com/in/your-profile</a
+              <a href="https://www.linkedin.com/in/vardan-patadiya-71382b304/" target="_blank" rel="noreferrer"
+                >Vardan Patadiya</a
               >
             </p>
             <p>
               <i class="fa-brands fa-github"></i>
-              <a href="https://github.com/" target="_blank" rel="noreferrer"
-                >github.com/your-username</a
+              <a href="https://github.com/Vardan1564" target="_blank" rel="noreferrer"
+                >Vardan1564</a
               >
             </p>
           </div>
 
-          <form class="contact-form" id="contact-form">
+          <form
+            class="contact-form"
+            id="contact-form"
+            action="https://formsubmit.co/patadiyavardan@gmail.com"
+            method="POST"
+          >
+            <input
+              type="hidden"
+              name="_subject"
+              id="email-main-subject"
+              value="New portfolio contact request"
+            />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
             <label>
               Name
               <input type="text" name="name" placeholder="Your name" required />
@@ -228,6 +241,16 @@
             <label>
               Email
               <input type="email" name="email" placeholder="Your email" required />
+            </label>
+            <label>
+              Subject
+              <input
+                type="text"
+                name="subject"
+                placeholder="Subject"
+                maxlength="120"
+                required
+              />
             </label>
             <label>
               Message
@@ -238,7 +261,9 @@
                 required
               ></textarea>
             </label>
-            <button class="btn btn-primary" type="submit">Send Message</button>
+            <button class="btn btn-primary" id="contact-submit" type="submit">
+              Send Message
+            </button>
             <p id="form-status" aria-live="polite"></p>
           </form>
         </div>
