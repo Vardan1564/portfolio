@@ -413,6 +413,10 @@ i.icon-fallback {
   padding-left: 1.1rem;
 }
 
+.project-actions {
+  margin-top: 1rem;
+}
+
 .tag-row {
   display: flex;
   flex-wrap: wrap;
